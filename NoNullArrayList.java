@@ -16,15 +16,17 @@ public class NoNullArrayList<T> extends ArrayList<T> {
   public boolean add(T value){
     if (value == null){
       throw new IllegalArgumentException("error: value is null");
-      
+
     }
     super.add(value);
     return true;
   }
-  public static void main(String[] args){
-    //Holder<Integer> data = new Holder<Integer>();
-    NoNullArrayList<Integer> test = new NoNullArrayList<Integer>();
-    System.out.println();
 
+  public void add(int index, T value){
+    if (value == null){
+      throw new IllegalArgumentException("error: value is null");
+    }
+    super.add(index, value);
   }
+  
 }
