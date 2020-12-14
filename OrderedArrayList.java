@@ -8,14 +8,17 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
 
   public int findIndex(T newVal){
     for (int i = 0; i < size(); i++) {
-      if (newVal.compareTo(this.get(i)) <= 0) {
+      if (newVal.compareTo(this.get(i)) < 0) {
           return i;
       }
     }
     return size();
   }
 
-
+  public void add(int index, T newVal) {
+      int index1 = findIndex(newVal);
+      super.add(index1, newVal);
+    }
 
 
 
