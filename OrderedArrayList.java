@@ -7,12 +7,17 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
   }
 
   public int findIndex(T newVal){
-    for (int i = 0; i < size(); i++) {
-      if (newVal.compareTo(this.get(i)) < 0) {
+    if (newVal == null){
+      throw new IllegalArgumentException("error: value is null");
+    }
+      for (int i = 0; i < size(); i++) {
+      if (newVal.compareTo(this.get(i)) <= 0) {
           return i;
       }
     }
     return size();
+
+
   }
 
   public void add(int index, T newVal) {
@@ -28,9 +33,11 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
 
 
   public T set(int index, T value){
+    if(value == null)
+    throw new IllegalArgumentException();
     T ans = get(index);
-    super.remove(index);
-    super.add(index, value);
+    remove(index);
+    add(value);
     return ans;
   }
 
